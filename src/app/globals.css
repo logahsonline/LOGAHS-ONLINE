@@ -1,19 +1,6 @@
 @import "tailwindcss";
 
-@theme inline {
-  /* Optional: Tailwind theme tokens (kept minimal; the visuals live in utility classes) */
+body {
+  background: red !important;
 }
-
-@layer base {
-  html,
-  body {
-    height: 100%;
-  }
-}
-
-/* Make sure Tailwind v4 utilities/plugins are included */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 
