@@ -6,8 +6,9 @@ export function getServerSupabaseClient() {
 
   const getCookie = (name: string) => {
     // next/headers cookies() returns a Promise in this Next.js version typing.
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    return (cookieStore as any).get?.(name)?.value ?? undefined;
+    return (cookieStore as { get?: (k: string) => { value?: unknown } }).get?.(name)?.value as
+      | string
+      | undefined;
   };
 
   return createServerClient(

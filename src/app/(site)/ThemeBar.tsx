@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
 
 export default function ThemeBar({
   activeTheme,
@@ -11,9 +12,7 @@ export default function ThemeBar({
 }) {
   const [mode, setMode] = useState(visitorMode);
 
-  useEffect(() => {
-    setMode(visitorMode);
-  }, [visitorMode]);
+
 
   return (
     <div className="flex items-center gap-2 text-sm">

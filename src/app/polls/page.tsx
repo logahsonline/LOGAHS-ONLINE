@@ -20,16 +20,23 @@ export default async function PollsPage() {
       <div className="mt-6 rounded-3xl bg-white/70 dark:bg-white/5 ring-1 ring-black/5 shadow-sm p-6">
         <h2 className="font-extrabold">Community polls</h2>
         <ul className="mt-4 space-y-3">
-          {(polls ?? []).map((p: any) => (
-            <li key={p.id} className="flex items-center justify-between gap-4">
+          {(polls ?? []).map((p) => (
+            <li
+              key={String((p as { id?: string | null }).id)}
+              className="flex items-center justify-between gap-4"
+            >
               <Link
-                href={`/polls/${p.id}`}
+                href={`/polls/${String((p as { id?: string | null }).id)}`}
+
                 className="text-sm font-semibold text-sky-800 hover:text-sky-700 dark:text-sky-200 dark:hover:text-sky-300"
               >
-                {p.question ?? "(Untitled poll)"}
+                {(p as { question?: string | null }).question ?? "(Untitled poll)"}
               </Link>
               <time className="text-xs font-semibold text-slate-500">
-                {p.created_at ? new Date(p.created_at).toLocaleDateString() : ""}
+                {(p as { created_at?: string | null }).created_at
+                  ? new Date((p as { created_at?: string | null }).created_at as string)
+                      .toLocaleDateString()
+                  : ""}
               </time>
             </li>
           ))}

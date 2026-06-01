@@ -19,13 +19,21 @@ export default async function FutureEventsPage() {
       <div className="mt-6 rounded-3xl bg-white/70 dark:bg-white/5 ring-1 ring-black/5 shadow-sm p-6">
         <h2 className="font-extrabold">Upcoming</h2>
         <ul className="mt-4 space-y-3">
-          {(events ?? []).map((e: any) => (
-            <li key={e.id} className="flex items-start justify-between gap-4">
+          {(events ?? []).map((e) => (
+            <li
+              key={String((e as { id?: string | null }).id)}
+              className="flex items-start justify-between gap-4"
+            >
               <div>
-                <div className="text-sm font-extrabold">{e.title ?? "(Untitled)"}</div>
+                <div className="text-sm font-extrabold">
+                  {(e as { title?: string | null }).title ?? "(Untitled)"}
+                </div>
               </div>
               <div className="text-xs font-semibold text-slate-500">
-                {e.start_date ? new Date(e.start_date).toLocaleDateString() : ""}
+                {(e as { start_date?: string | null }).start_date
+                  ? new Date((e as { start_date?: string | null }).start_date as string)
+                      .toLocaleDateString()
+                  : ""}
               </div>
             </li>
           ))}

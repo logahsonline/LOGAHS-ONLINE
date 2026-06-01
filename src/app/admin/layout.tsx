@@ -1,5 +1,9 @@
 import React from "react";
+import Link from "next/link";
 import { requireSiteAdmin } from "../../lib/auth/role";
+import { AdminNav } from "./(site-admin)/admin-nav";
+
+
 
 
 
@@ -28,18 +32,13 @@ export default async function AdminLayout({
           </div>
 
           <nav className="flex items-center gap-3 text-sm font-semibold">
-            <a
-              href="/admin"
-              className="rounded-full px-4 py-2 hover:bg-sky-50 dark:hover:bg-white/5"
-            >
-              Dashboard
-            </a>
-            <a
+            <AdminNav active="overview" />
+            <Link
               href="/"
               className="rounded-full bg-sky-600 px-4 py-2 text-white hover:bg-sky-700"
             >
               Public Site
-            </a>
+            </Link>
           </nav>
         </div>
       </header>
@@ -50,5 +49,8 @@ export default async function AdminLayout({
     </div>
   );
 }
+
+
+
 
 
