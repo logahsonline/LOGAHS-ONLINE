@@ -11,3 +11,9 @@
   }
 }
 
+/* Make sure Tailwind v4 utilities/plugins are included */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
