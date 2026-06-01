@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Optional: Tailwind theme tokens (kept minimal; the visuals live in utility classes) */
+}
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+  }
+}
+
